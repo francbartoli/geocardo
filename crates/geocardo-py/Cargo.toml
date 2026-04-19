@@ -1,0 +1,24 @@
+[package]
+name = "geocardo-py"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+description = "PyO3 bindings for geocardo native components."
+publish = false
+
+[lib]
+# Produces _native.so / _native.pyd / _native.dylib
+# Imported in Python as `geocardo._native`
+name = "_native"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3.workspace = true
+# Bindings for individual Rust crates are added here as they land:
+# geocardo-catalog = { path = "../geocardo-catalog" }
+# geocardo-cql2    = { path = "../geocardo-cql2" }
+# geocardo-schema  = { path = "../geocardo-schema" }
+# geocardo-geojson = { path = "../geocardo-geojson" }

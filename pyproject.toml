@@ -1,0 +1,122 @@
+[build-system]
+requires = ["maturin>=1.4,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "geocardo"
+description = "OGC API building blocks for Python. Conformance first. By design. Only async."
+authors = [{ name = "Francesco Bartoli" }]
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.12"
+keywords = ["ogc", "ogc-api", "geospatial", "async", "openapi", "ddd"]
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Rust",
+    "Topic :: Scientific/Engineering :: GIS",
+    "Framework :: AsyncIO",
+    "Typing :: Typed",
+]
+dynamic = ["version"]
+
+dependencies = [
+    "shapely>=2.0",
+    "pyproj>=3.6",
+    "orjson>=3.9",
+    "better-result>=0.1.0",
+    "jsonschema-rs>=0.29",
+    "pydantic-settings>=2.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/francbartoli/geocardo"
+Repository = "https://github.com/francbartoli/geocardo"
+Issues = "https://github.com/francbartoli/geocardo/issues"
+
+# --------------------------------------------------------------------------- #
+# uv — development environment and dependency groups (PEP 735)                #
+# --------------------------------------------------------------------------- #
+
+[dependency-groups]
+dev = [
+    "maturin>=1.4",
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "pytest-cov>=5.0",
+    "ruff>=0.4",
+    "ty>=0.0.31",
+]
+
+[tool.uv]
+# Rebuild the Rust extension when any relevant source changes so that
+# `uv run pytest` always exercises the current Rust code.
+cache-keys = [
+    { file = "pyproject.toml" },
+    { file = "Cargo.toml" },
+    { file = "crates/**/*.rs" },
+    { file = "crates/**/Cargo.toml" },
+]
+
+# --------------------------------------------------------------------------- #
+# maturin                                                                     #
+# --------------------------------------------------------------------------- #
+
+[tool.maturin]
+module-name = "geocardo._native"
+manifest-path = "crates/geocardo-py/Cargo.toml"
+features = ["pyo3/extension-module"]
+python-source = "src"
+
+# --------------------------------------------------------------------------- #
+# ruff                                                                        #
+# --------------------------------------------------------------------------- #
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "N",   # pep8-naming
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "SIM", # flake8-simplify
+    "RUF", # ruff-specific
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101"]  # allow assert in tests
+
+# --------------------------------------------------------------------------- #
+# ty — type checker (by Astral, same folks as ruff and uv)                    #
+# --------------------------------------------------------------------------- #
+
+[tool.ty.environment]
+python-version = "3.12"
+root = ["./src", "./tests"]
+
+# ty is in preview. It checks a broad set of rules by default; we can tighten
+# individual rules as the codebase grows. `possibly-unresolved-reference` and
+# `division-by-zero` are off by default — enable them if we want stricter checks.
+#
+# See all rules with: uv run ty explain rule
+# See current config effect with: uv run ty check --verbose
+
+# --------------------------------------------------------------------------- #
+# pytest                                                                      #
+# --------------------------------------------------------------------------- #
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "-v --strict-markers"

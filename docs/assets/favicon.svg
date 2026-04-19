@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" role="img" aria-label="geocardo">
+  <title>geocardo</title>
+  <desc>Favicon variant: four insulae only. The cardo/decumanus stripes are omitted because they would not render at favicon sizes (16–32px). The grid metaphor remains legible through the negative space between blocks.</desc>
+  <g transform="translate(250,250)">
+    <rect x="-230" y="-230" width="200" height="200" rx="24" fill="#085041"/>
+    <rect x="30"   y="-230" width="200" height="200" rx="24" fill="#0F6E56"/>
+    <rect x="-230" y="30"   width="200" height="200" rx="24" fill="#0F6E56"/>
+    <rect x="30"   y="30"   width="200" height="200" rx="24" fill="#085041"/>
+  </g>
+</svg>

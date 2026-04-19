@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" role="img" aria-label="geocardo">
+  <title>geocardo</title>
+  <desc>Four insulae arranged on the Roman grid — one per bounded context — with cardo (bold vertical stripe) and decumanus (horizontal stripe) separating them. The small diamond at the intersection is the ServiceState, where standard, intent and capabilities meet.</desc>
+  <g transform="translate(250,250)">
+    <rect x="-230" y="-230" width="200" height="200" rx="14" fill="#085041"/>
+    <rect x="30"   y="-230" width="200" height="200" rx="14" fill="#0F6E56"/>
+    <rect x="-230" y="30"   width="200" height="200" rx="14" fill="#0F6E56"/>
+    <rect x="30"   y="30"   width="200" height="200" rx="14" fill="#085041"/>
+    <rect x="-8" y="-234" width="16" height="468" fill="#1D9E75"/>
+    <rect x="-234" y="-5" width="468" height="10" fill="#9FE1CB"/>
+    <path d="M 0,-14 L 14,0 L 0,14 L -14,0 Z" fill="#085041"/>
+  </g>
+</svg>

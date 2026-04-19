@@ -1,0 +1,33 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/geocardo-py",
+    # Crates added as the roadmap progresses (see ADR-016):
+    # "crates/geocardo-catalog",   # v0.1: OGC OpenAPI -> compiled catalog
+    # "crates/geocardo-cql2",      # v0.7: CQL2 parser
+    # "crates/geocardo-schema",    # v0.9: JSON Schema validator (jsonschema-rs wrapper)
+    # "crates/geocardo-geojson",   # v0.10: GeoJSON serializer (optional, benchmark-driven)
+]
+
+[workspace.package]
+version = "0.0.0"
+edition = "2021"
+license = "MIT"
+authors = ["Francesco Bartoli"]
+repository = "https://github.com/francbartoli/geocardo"
+rust-version = "1.75"
+
+[workspace.dependencies]
+pyo3 = { version = "0.22", features = ["extension-module"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+bincode = "1.3"
+# Added in v0.1 with geocardo-catalog:
+# openapiv3 = "2.0"
+# reqwest = { version = "0.12", default-features = false, features = ["blocking", "rustls-tls"] }
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+strip = true
+opt-level = 3

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" role="img" aria-label="geocardo — Conformance first. By design. Only async.">
+  <title>geocardo — Conformance first. By design. Only async.</title>
+  <desc>Horizontal lockup: the geocardo mark at left, the wordmark "geocardo" in monospace teal at center, with the project mantra as tagline below.</desc>
+
+  <!-- Mark -->
+  <g transform="translate(140,140) scale(0.42)">
+    <rect x="-230" y="-230" width="200" height="200" rx="14" fill="#085041"/>
+    <rect x="30"   y="-230" width="200" height="200" rx="14" fill="#0F6E56"/>
+    <rect x="-230" y="30"   width="200" height="200" rx="14" fill="#0F6E56"/>
+    <rect x="30"   y="30"   width="200" height="200" rx="14" fill="#085041"/>
+    <rect x="-8" y="-234" width="16" height="468" fill="#1D9E75"/>
+    <rect x="-234" y="-5" width="468" height="10" fill="#9FE1CB"/>
+    <path d="M 0,-14 L 14,0 L 0,14 L -14,0 Z" fill="#085041"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="290" y="160" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
+        font-size="90" font-weight="700" letter-spacing="-2" fill="#085041">geocardo</text>
+
+  <!-- Tagline -->
+  <text x="292" y="200" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif"
+        font-size="18" letter-spacing="4" fill="#1D9E75" font-weight="600">
+    CONFORMANCE FIRST · BY DESIGN · ONLY ASYNC
+  </text>
+</svg>
